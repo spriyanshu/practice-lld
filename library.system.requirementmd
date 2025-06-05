@@ -1,0 +1,46 @@
+# Library Management System - Low Level Design Requirements
+
+## Problem Statement
+
+Design and implement a comprehensive Library Management System that efficiently handles book inventory, member registration, and borrowing/returning operations while maintaining high code quality, modularity, and extensibility.
+
+## Core Functional Requirements
+
+### 1. Book Management
+
+- **Add Books**: System should support adding different types of books (Fiction, Non-Fiction, etc.) to the library inventory
+- **Book Categorization**: Each book must have essential attributes including title, author, ISBN, and genre
+- **Duplicate Prevention**: Prevent addition of books with duplicate ISBNs
+- **Book Retrieval**: Enable searching and retrieval of books by ISBN
+- **Extensible Book Types**: Support for adding new book categories without modifying existing code
+
+### 2. Member Management
+
+- **Member Registration**: Register new library members with unique member IDs
+- **Member Information**: Store and manage member details including name and unique identifier
+- **Duplicate Prevention**: Prevent registration of members with duplicate IDs
+- **Member Lookup**: Retrieve member information by member ID
+- **Flexible Member Creation**: Support step-by-step member creation process
+
+### 3. Borrowing and Returning System
+
+- **Individual Book Borrowing**: Allow members to borrow individual books
+- **Bulk Operations**: Support borrowing multiple books in a single transaction
+- **Return Processing**: Handle book returns with proper validation
+- **Availability Tracking**: Track which books are currently borrowed and by whom
+- **Business Rules Enforcement**:
+  - Members cannot borrow already borrowed books
+  - Only registered members can borrow books
+  - Only existing books can be borrowed
+  - Books can only be returned if they were actually borrowed
+
+### 4. Composite Item Handling
+
+- **Single Item Operations**: Handle individual book borrowing
+- **Collection Operations**: Support borrowing collections of books as a single unit
+- **Unified Interface**: Treat single books and collections uniformly for borrowing operations
+
+### 5. External System Integration
+
+- **Data Adaptation**: Handle book data from external systems with different field names and formats
+- **Flexible Input Processing**: Convert external book representations to internal system format
