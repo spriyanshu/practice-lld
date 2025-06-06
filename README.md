@@ -1,41 +1,101 @@
-# 🧠 practice-lld
+# Low Level Design (LLD) Problems Repository
 
-A curated collection of Low-Level Design (LLD) problems solved using OOP principles, SOLID design, and design patterns.
+This repository contains a collection of 20 common Low Level Design interview problems with structured solutions, requirements documentation, and tracking capabilities.
 
-## 🚀 Purpose
-This repository helps me prepare for system design interviews by solving real-world LLD problems using clean, maintainable, and testable code.
+## 📁 Repository Structure
 
-## 🛠️ What you'll find
-- 📦 Modular, class-based implementations
-- 🧱 SOLID principles in action
-- 🎯 Real interview-style problem solving
-- 🔁 Design pattern demonstrations (Composite, Strategy, Factory, etc.)
+```
+lld-problems/
+├── README.md                 # This file
+├── lld-problems.json        # Complete problem definitions
+├── progress-tracker.md      # Track your progress on each problem
+├── templates/               # Standardized templates
+│   ├── requirements.md      # Template for requirements documentation
+│   ├── design.md           # Template for design documentation
+│   └── solution-template/   # Code solution templates
+├── problems/               # Individual problem folders
+│   ├── 01-parking-lot-system/
+│   ├── 02-traffic-signal-control/
+│   ├── 03-vending-machine/
+│   └── ... (20 problems total)
+├── utils/                  # Helper scripts
+│   └── setup-problem.py    # Script to setup new problem structure
+└── docs/                   # General documentation
+    └── common-patterns.md  # Common design patterns used
+```
 
-## 📚 Topics Covered
-- Object-Oriented Design (OOP)
-- Low-Level Design (LLD)
-- Design Patterns
-- Edge case handling
-- Interview-style explanations
+## 🎯 Problem Categories
 
-## 📂 Problem List
-- ✅ Library Management System
-- 🅿️ Parking Lot System
-- 💰 Splitwise
-- 🛒 Shopping Cart
-- 🧊 LRU Cache
-- 🔔 Notification System (WIP)
+### Easy (25 minutes)
 
-## 👨‍💻 Tech Stack
-- Language: TypeScript
-- Testing: [Add if any, e.g. Jest]
-- Diagrams: [Optional UML tools]
+- Parking Lot System
+- Traffic Signal Control System
+- Vending Machine
+- ATM Machine
+- Task Management System
+- LRU Cache
+- Tic-Tac-Toe Game
 
-## 📌 Goals
-- Practice system design for interviews
-- Improve code quality and structure
-- Demonstrate design thinking
+### Medium (35 minutes)
 
----
+- Library Management System
+- Text Editor
+- Meeting Room Scheduler
+- Elevator Management System
+- Movie Ticket Booking System
+- Restaurant Ordering System
+- Online Auction System
+- Hotel Reservation System
+- Car Rental System
+- Publish-Subscribe System
+- Customer Issue Ticketing System
+- Digital Wallet Service
+- Airline Reservation System
 
-> ⚠️ This repo is for educational and preparation purposes. Contributions and feedback are welcome!
+## 🚀 How to Use This Repository
+
+1. **Choose a Problem**: Browse the `problems/` directory or check `progress-tracker.md`
+2. **Read Requirements**: Start with the `requirements.md` in each problem folder
+3. **Design First**: Use the `design.md` template to plan your approach
+4. **Implement**: Code your solution in the `solution/` directory
+5. **Test**: Add test cases in the `tests/` directory
+6. **Track Progress**: Update your status in `progress-tracker.md`
+
+## 📋 Problem Structure
+
+Each problem folder contains:
+
+- `README.md` - Problem overview and quick reference
+- `requirements.md` - Detailed requirements and constraints
+- `design.md` - Your design approach and class diagrams
+- `solution/` - Implementation code
+- `tests/` - Test cases and examples
+
+## 🛠️ Setup Instructions
+
+1. Clone this repository
+2. Choose your preferred programming language
+3. Use the templates to maintain consistency
+4. Track your progress as you solve problems
+
+## 📈 Progress Tracking
+
+Use `progress-tracker.md` to track:
+
+- ✅ Completed problems
+- 🔄 In progress
+- ❌ Not started
+- ⏱️ Time taken
+- 📝 Notes and learnings
+
+## 🎨 Design Patterns Covered
+
+- Factory Pattern
+- Observer Pattern
+- Strategy Pattern
+- State Pattern
+- Command Pattern
+- Singleton Pattern
+- Builder Pattern
+
+Happy coding! 🚀

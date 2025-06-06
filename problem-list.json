@@ -1,0 +1,302 @@
+[
+  {
+    "problem_name": "Parking Lot Management System",
+    "business_context": "Design a system to manage a multi-level parking facility (e.g. in a mall or airport). The system should model parking floors and spots, support different vehicle types (e.g. two-wheelers, cars) and ensure real-world constraints (limited spots, entry/exit gates). Designing a parking lot system is a classic low-level design exercise commonly asked in interviews:contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}.",
+    "problem_statement": "Design the classes and interfaces for a parking lot system that allows vehicles to be parked and retrieved. The system should manage multiple floors of parking, different spot types, and support operations like parking a vehicle, unparking it, and querying availability.",
+    "requirements": "Core functionalities include:\n- Park a vehicle: find and reserve a free spot for a given vehicle type:contentReference[oaicite:2]{index=2}.\n- Unpark a vehicle: free up the spot when the vehicle leaves:contentReference[oaicite:3]{index=3}.\n- Search parked vehicles: locate a vehicle by license plate number:contentReference[oaicite:4]{index=4}.\n- Report availability: count free spots by floor and vehicle type:contentReference[oaicite:5]{index=5}.\n- Maintain data: track each parking spot’s status (occupied or free) and vehicle details when parked.",
+    "constraints": "Typical constraints include a fixed number of spots (capacity per floor and overall), and operations should be efficient (near O(1) for lookups). The design should be thread-safe if concurrent entry/exit is considered (e.g. multiple gates). Data consistency is important (no double-booking of spots). Memory usage is modest (storing spot and vehicle info). Use of design patterns (like Strategy for parking assignment) is expected:contentReference[oaicite:6]{index=6}. ",
+    "technical_metadata": {
+      "ideal_time": 25,
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": [
+          "Object-oriented design",
+          "Class modeling",
+          "Strategy design pattern"
+        ],
+        "secondary": ["Collections/Maps", "Concurrency (thread-safety)"]
+      }
+    }
+  },
+  {
+    "problem_name": "Tic-Tac-Toe Game",
+    "business_context": "Model a simple two-player Tic-Tac-Toe game (3x3 board) as an object-oriented design. For example, you may be asked to design a mobile Tic-Tac-Toe game where two players alternate marking X or O. This classic game is often used to test basic design skills in interviews (e.g. it appeared in a Microsoft interview):contentReference[oaicite:7]{index=7}.",
+    "problem_statement": "Design a Tic-Tac-Toe game that allows two players to play by placing X or O on a 3x3 grid. The system should enforce game rules (alternate turns, valid moves), detect a win or draw, and allow starting a new game.",
+    "requirements": "Core requirements include:\n- Board representation: maintain a 3x3 grid that tracks player moves.\n- Player turns: alternate turns between two players (X and O).\n- Move validation: ensure a move is within bounds and on an empty cell.\n- Win/draw detection: after each move, check if one player has three in a row (row, column, diagonal) or if the board is full (draw).\n- Game reset: allow the game to be reset for a new round.\n- (Optional) Scorekeeping: track wins/draws across multiple games.",
+    "constraints": "Constraints are minimal: the board is fixed-size (3x3), so performance is not a concern. The design should clearly separate game state from UI. If considered multiplayer (e.g. network play), ensure state is synchronized. The system should be robust against invalid inputs (ignored or error messages).",
+    "technical_metadata": {
+      "ideal_time": 25,
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": [
+          "Object-oriented design",
+          "Class modeling",
+          "State management"
+        ],
+        "secondary": [
+          "Algorithmic logic (win detection)",
+          "Concurrency (if networked multiplayer)"
+        ]
+      }
+    }
+  },
+  {
+    "problem_name": "Chess Game Design",
+    "business_context": "Design a Chess game using object-oriented principles. For example, an online chess platform needs a backend model for the game. This problem is commonly asked to assess OOP skills (it has been asked by companies like Adobe, Amazon, Microsoft):contentReference[oaicite:8]{index=8}.",
+    "problem_statement": "Design classes to represent a standard chess game. The system should manage an 8x8 board and the 32 chess pieces (King, Queen, Rook, Bishop, Knight, Pawn for both players). Players alternate moves, and the game should enforce all chess rules including valid piece movements, capturing, check/checkmate, and draw conditions.",
+    "requirements": "Key requirements include:\n- Board setup: initialize an 8x8 grid with all pieces in starting positions.\n- Piece classes: represent each piece type (King, Queen, Rook, Bishop, Knight, Pawn). Each piece knows its movement rules.\n- Move execution: move a piece from one square to another if the move is valid (e.g. a Rook moves straight):contentReference[oaicite:9]{index=9}.\n- Rule enforcement: prevent illegal moves (e.g. moving into check), handle capturing opponents’ pieces, and detect check/checkmate.\n- Game outcome: determine win (checkmate), draw (stalemate or insufficient material), or tie (move limit).\n- Turn management: alternate turns between two players, enforce one move per turn.",
+    "constraints": "The board size and piece count are fixed. Move validation should be efficient (constant time checks for piece-specific moves). The design must correctly handle all chess rules (which can be complex). Concurrency is usually not needed (turn-based). The design often uses patterns (e.g. a Factory to create pieces, Strategy for move behavior):contentReference[oaicite:10]{index=10}.",
+    "technical_metadata": {
+      "ideal_time": 35,
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": [
+          "Inheritance and class hierarchies",
+          "Factory and Strategy design patterns",
+          "State representation"
+        ],
+        "secondary": [
+          "Singleton (for piece factory)",
+          "Board representation (2D array)"
+        ]
+      }
+    }
+  },
+  {
+    "problem_name": "Vending Machine System",
+    "business_context": "Design the software for a vending machine that dispenses items (e.g. snacks or drinks) based on user input. This is a well-known interview problem (often asked in senior-level design interviews):contentReference[oaicite:11]{index=11}. The system should manage inventory, handle payments, and transition through machine states (e.g. selecting item, accepting money).",
+    "problem_statement": "Design classes for a vending machine that can store items with prices, accept payments (coins or bills), and dispense items with change. The machine should allow item selection, payment processing, and refund if needed. It should also support restocking inventory.",
+    "requirements": "Core requirements include:\n- Inventory tracking: the machine keeps track of item types, prices, and stock levels:contentReference[oaicite:12]{index=12}.\n- Payment handling: allow the user to insert money (coins/bills) and accumulate credit.\n- Item selection: user selects an item; the machine checks if enough credit is inserted and if the item is in stock.\n- Price validation: if inserted money ≥ price, dispense the item; otherwise prompt for more cash.\n- Change dispensing: return change if the user overpays.\n- Error handling: cancel or refuse the transaction if insufficient funds or item is unavailable:contentReference[oaicite:13]{index=13}.\n- Restocking: allow operators to refill items and change as needed.",
+    "constraints": "The machine operates in distinct states (Idle, HasMoney, Dispensing, etc.). Ensure transitions are well-defined. The solution should handle numeric precision for money. There is limited capacity for items and change. Typically the design uses a State design pattern and possibly a Factory for different machine types:contentReference[oaicite:14]{index=14}. The system should be robust and handle invalid inputs (e.g. unknown coins).",
+    "technical_metadata": {
+      "ideal_time": 35,
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": [
+          "Object-oriented design",
+          "State design pattern",
+          "Factory pattern"
+        ],
+        "secondary": ["Inventory management", "Payment processing"]
+      }
+    }
+  },
+  {
+    "problem_name": "Elevator Management System",
+    "business_context": "Design a control system for multiple elevators in a large building. For example, a multi-story office needs an intelligent elevator controller. This complex OOD question is often used to test senior-level design skills. The system should optimize elevator usage and response times.",
+    "problem_statement": "Design classes for an elevator system with multiple elevator shafts. The system should track each elevator’s state (current floor, direction, occupancy) and process user requests for elevators (from any floor to a destination floor). The controller should assign the most appropriate elevator to each request.",
+    "requirements": "Key requirements include:\n- Elevator state tracking: for each elevator, maintain its current floor, direction of motion (up/down), and number of passengers:contentReference[oaicite:15]{index=15}.\n- Request handling: when a user requests an elevator (presses call button on a floor), the system selects an eligible elevator and sends it to the user.\n- Optimal assignment: assign elevators to minimize wait and travel time (e.g. choose an idle elevator or one already moving towards that floor):contentReference[oaicite:16]{index=16}.\n- Movement control: simulate elevator movement floor-by-floor. Allow users inside to select destination floors.\n- Concurrency: handle multiple simultaneous requests and elevator movements.",
+    "constraints": "Each elevator can be in states (Moving Up, Moving Down, Idle) with different behaviors:contentReference[oaicite:17]{index=17}. The design should use the State pattern for elevator states. The system must handle concurrency (simultaneous requests) and ensure thread safety if implemented in a multi-threaded context. Limits include maximum capacity per elevator and time to move between floors. Efficiency in scheduling (quick decision making) is important for performance.",
+    "technical_metadata": {
+      "ideal_time": 45,
+      "difficulty": "Hard",
+      "topics_covered": {
+        "primary": [
+          "State design pattern",
+          "Scheduling/dispatch algorithm",
+          "Class design"
+        ],
+        "secondary": [
+          "Concurrency/multithreading",
+          "Observer pattern (optional for event handling)"
+        ]
+      }
+    }
+  },
+
+  {
+    "problem_name": "LRU Cache System",
+    "business_context": "Many high-traffic web services use in-memory caching to reduce database load and improve performance. An LRU (Least Recently Used) cache is a common mechanism to manage limited memory by evicting items that haven't been used recently.",
+    "problem_statement": "Design and implement a fixed-size LRU cache that supports efficient insertion, retrieval, and eviction of key-value pairs based on recency of use.",
+    "requirements": "Cache must support get(key) and put(key, value) operations. It should store up to a fixed capacity of items. On reaching capacity, the cache should evict the least recently used item when adding a new one. Both get and put operations should update item usage recency.",
+    "constraints": "The cache size is limited; operations should be O(1) time complexity. Memory overhead should be minimal given capacity. Consider thread-safety if accessed concurrently, but assume single-threaded context for this problem.",
+    "technical_metadata": {
+      "ideal_time": "25 minutes",
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": ["Data Structures", "HashMap"],
+        "secondary": ["Doubly Linked List"]
+      }
+    }
+  },
+  {
+    "problem_name": "Thread Pool Implementation",
+    "business_context": "Modern applications often perform many tasks concurrently. A thread pool helps reuse a fixed number of threads to execute a larger number of tasks asynchronously, improving resource utilization.",
+    "problem_statement": "Design and implement a thread pool system that can queue tasks (runnables) and execute them using a fixed number of worker threads.",
+    "requirements": "Support submitting tasks to the pool with an execute(task) method. The thread pool should manage a fixed number of worker threads that fetch and execute queued tasks. Provide a way to shutdown the pool gracefully, ensuring all queued tasks complete or are stopped. Handle rejection or waiting if the task queue is full (e.g., bounded queue).",
+    "constraints": "Implement thread-safe data structures to manage the task queue. Avoid busy-waiting; use proper synchronization or thread-safe queues. Ensure no deadlocks or race conditions. Memory for queued tasks may be limited, and tasks should be consumed fairly by available threads.",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Concurrency", "Producer-Consumer Pattern"],
+        "secondary": ["Synchronization"]
+      }
+    }
+  },
+  {
+    "problem_name": "URL Shortener Service",
+    "business_context": "A URL shortening service takes long web URLs and creates shortened aliases for easier sharing (like bit.ly or tinyurl). Such a service stores mappings between original URLs and short codes.",
+    "problem_statement": "Design a URL shortening system that encodes long URLs into short URLs and decodes short URLs back to the original long URLs.",
+    "requirements": "Given a long URL, generate a unique short key and store the mapping. The service should be able to retrieve the original URL given a short URL. Keys should be sufficiently random or unique (e.g., base62 encoding). Handle possible collisions. Optional: Track how many times a short URL was accessed.",
+    "constraints": "Assume a large number of URLs; ensure minimal collisions and efficient lookup (consider hash maps). The length of short URLs should be as small as feasible. The system should handle case sensitivity properly. Focus on design of data structures and algorithms, not on high availability or distributed aspects.",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Hashing", "Encoding"],
+        "secondary": ["Data Persistence"]
+      }
+    }
+  },
+  {
+    "problem_name": "Chat Room System",
+    "business_context": "Online chat applications allow multiple users to communicate in real-time in chat rooms or channels. Each message is broadcast to all participants in a room.",
+    "problem_statement": "Design a chat room system where multiple clients can join named chat rooms, send messages, and receive messages from others in the same room.",
+    "requirements": "The system should allow creating and joining chat rooms by name. Users should be able to send messages to a room, and all current participants of that room should receive each message. Handle user join/leave notifications. Provide basic features like user nicknames and room listing.",
+    "constraints": "Focus on the design of server-side components (client-server). Use thread-safe structures to manage concurrent access from clients. Assume a moderate number of users per room (e.g., <1000). Latency should be low, but delivery in FIFO order for each user is sufficient. Security (authentication) is out of scope.",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Network Programming", "Concurrency"],
+        "secondary": ["Observer Pattern"]
+      }
+    }
+  },
+  {
+    "problem_name": "Car Rental Service",
+    "business_context": "Car rental companies provide vehicles for customers to rent for short-term use. They manage vehicle inventory across locations and handle reservation requests.",
+    "problem_statement": "Design a car rental management system that handles vehicle inventory, rental bookings, returns, and availability checking.",
+    "requirements": "Manage a fleet of vehicles with attributes like model, location, and status (available/rented). Allow customers to book a vehicle for a given date range, ensuring availability. Support returning vehicles to update status. Provide ways to search available vehicles by type or location. Include maintenance functions to add/remove vehicles and update their status.",
+    "constraints": "Assume a single-region rental company (no complex location network). Booking requests should not double-book a vehicle. System should handle overlapping date ranges and avoid conflicts. Assume this is not a distributed system; focus on object modeling and basic booking logic.",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Reservation Management", "Object-Oriented Design"],
+        "secondary": ["State Management"]
+      }
+    }
+  },
+  {
+    "problem_name": "Shopping Cart System",
+    "business_context": "In online retail, a shopping cart holds items that a user intends to purchase. It tracks items, quantities, and calculates totals before checkout.",
+    "problem_statement": "Design a shopping cart component that can add items, remove items, update quantities, and calculate the total cost, including taxes and discounts.",
+    "requirements": "The system should allow products to be added or removed from the cart by ID, update item quantities, and compute the current total price. It should apply discounts or coupons, calculate tax as needed, and show an itemized summary. Each user has an independent cart. Provide a checkout method stub (no payment processing needed).",
+    "constraints": "Assume product catalog and prices are available from another service. Focus on cart behavior and calculation logic. Handle invalid operations (e.g., removing an item not in the cart). Ensure consistency of the cart state when operations are performed in sequence. Concurrency is minimal (one cart per user).",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Cart Management", "Object-Oriented Design"],
+        "secondary": ["Data Consistency"]
+      }
+    }
+  },
+  {
+    "problem_name": "Photo Gallery System",
+    "business_context": "Users often maintain collections of photos organized into albums or galleries on their devices or cloud storage. An application must support adding, viewing, and organizing photos.",
+    "problem_statement": "Design a photo gallery system that allows users to upload photos, organize them into albums, and perform basic operations like view, search, and delete.",
+    "requirements": "Users should be able to create albums and add photos (with metadata like title, date) to albums. Provide functionality to view photos (with pagination or lazy loading), search photos by metadata, and delete photos or entire albums. Optimize for quick lookup and minimal memory footprint. Assume photos are stored externally; the system manages metadata and references.",
+    "constraints": "Expect a large number of photos (scale up to millions of items). Use efficient data structures for album-photo associations. Loading should be on-demand to save memory. No need for image processing or UI design. Focus on backend design of photo and album classes and data storage.",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Data Modeling", "File System"],
+        "secondary": ["Caching"]
+      }
+    }
+  },
+  {
+    "problem_name": "Home Security Monitoring",
+    "business_context": "Smart home security systems include sensors (motion, door/window) and alarms. They monitor events in real-time and alert homeowners or authorities when suspicious activity is detected.",
+    "problem_statement": "Design a home security monitoring system that manages various sensors and generates alerts based on their events.",
+    "requirements": "The system should allow configuration of different sensor types (door, motion, smoke). It should process real-time events (e.g., door opened) and trigger alerts/alarms. Users can arm or disarm the system. Provide a way to log events and acknowledge alerts. Support notifications to multiple stakeholders (e.g., owner, security company).",
+    "constraints": "Sensors generate events asynchronously; use event-driven patterns. Ensure the system is responsive with minimal delay. Design for reliability: if multiple sensors trigger simultaneously, handle them properly. Assume fixed number of sensors and simple alert rules (no machine learning).",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Event-Driven Architecture", "IoT"],
+        "secondary": ["Observer Pattern"]
+      }
+    }
+  },
+  {
+    "problem_name": "Notification Scheduling Service",
+    "business_context": "Many applications need to send notifications (emails, SMS, push) to users on scheduled times or triggered events. A notification service manages scheduling and delivery.",
+    "problem_statement": "Design a notification scheduling system that can schedule notifications to be sent at specific times or after certain events.",
+    "requirements": "Allow scheduling a notification (with message and recipient) at a specific future time or repeating intervals. Handle immediate dispatch for triggered notifications. Ensure each notification is delivered once. Provide a way to cancel scheduled notifications. Track delivery status (sent, failed).",
+    "constraints": "Notifications should be stored reliably until sent. The system may need to handle many scheduled items (e.g., millions), so design efficient storage and retrieval of next notifications. Use concurrency for sending messages but ensure idempotency to avoid duplicates. Focus on scheduling and state management, not on actual message transport protocols.",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Scheduling", "Observer Pattern"],
+        "secondary": ["Concurrency"]
+      }
+    }
+  },
+  {
+    "problem_name": "Board Game Engine (Monopoly)",
+    "business_context": "Monopoly is a complex board game with players, properties, chance cards, and money transactions. Designing it requires modeling game state and rules.",
+    "problem_statement": "Design a simplified engine for the Monopoly board game, handling players, board spaces, dice rolls, property transactions, and turn sequencing.",
+    "requirements": "Model the game board with properties (each with purchase price and rent). Support players taking turns rolling dice and moving around the board. Implement actions when landing on properties (buy if available, pay rent if owned, draw a card if applicable). Manage player assets (money, owned properties). Include basic rules like passing Go (collect salary).",
+    "constraints": "Focus on core gameplay mechanics; ignore complex rules (like auctions, houses, hotels for simplicity). Ensure game state is updated correctly each turn. Design classes to represent the board, players, and spaces. Consider extensibility for additional rules.",
+    "technical_metadata": {
+      "ideal_time": "35 minutes",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Game Engine", "Object-Oriented Design"],
+        "secondary": ["State Machine"]
+      }
+    }
+  },
+  {
+    "problem_name": "Spreadsheet Application",
+    "business_context": "Spreadsheet software (like Microsoft Excel or Google Sheets) is used for data entry, computation, and analysis in rows and columns. A key feature is formula computation where cells can depend on others.",
+    "problem_statement": "Design a basic spreadsheet application that supports a grid of cells with values or formulas, and updates dependent cells when values change.",
+    "requirements": "Support a 2D grid of cells identified by row/column. Each cell can store a value or a formula (e.g., =A1 + B2). When a cell value changes, all dependent cells should update accordingly. Detect and handle circular dependencies. Provide functionality to set/get cell values and formulas.",
+    "constraints": "Assume a maximum size (e.g., 1000x1000). Optimize for efficient updates: avoid recomputing unaffected cells. Use an appropriate data structure to track dependencies (like a graph). Ignore persistence and UI. Handle large sheets with minimal memory overhead.",
+    "technical_metadata": {
+      "ideal_time": "45 minutes",
+      "difficulty": "Hard",
+      "topics_covered": {
+        "primary": ["Dependency Graph", "Data Structures"],
+        "secondary": ["Observer Pattern"]
+      }
+    }
+  },
+  {
+    "problem_name": "Flight Reservation System",
+    "business_context": "Airlines and travel portals need systems to manage flight bookings, seat assignments, and availability for customers booking flights.",
+    "problem_statement": "Design a flight reservation system that handles flight schedules, bookings by customers, and seat allocations.",
+    "requirements": "Maintain a list of flights (with flight number, date, time, origin, destination) and their seat maps (which seats are available or reserved). Allow customers to search for flights between cities on specific dates, select seats, and book tickets. Ensure seat selection prevents double-booking. Support cancellation to free up seats. Track passenger details for bookings.",
+    "constraints": "Assume single time-zone for simplicity. Handle concurrent booking attempts on the same flight (prevent race conditions). Optimize for performance as the number of flights and bookings can be large. Ignore payment processing and focus on booking logic.",
+    "technical_metadata": {
+      "ideal_time": "45 minutes",
+      "difficulty": "Hard",
+      "topics_covered": {
+        "primary": ["Reservation Management", "Concurrency"],
+        "secondary": ["Seat Allocation"]
+      }
+    }
+  },
+  {
+    "problem_name": "Poker Game Engine",
+    "business_context": "Poker is a popular card game with complex rules for dealing cards, betting rounds, and hand ranking. A simplified digital poker engine can be used in gaming platforms.",
+    "problem_statement": "Design a system that manages a round of Texas Hold'em Poker for multiple players, including dealing cards, managing betting rounds, and determining the winner.",
+    "requirements": "Manage a standard 52-card deck with shuffling. Deal two cards to each player (hole cards) and five community cards on the table (with the sequence flop, turn, river). Handle betting rounds between deals, allowing players to bet, raise, call, or fold. At showdown, evaluate each player's best hand (5-card combination from 7 cards) to determine the winner. Support multiple players (e.g., up to 6).",
+    "constraints": "Focus on game mechanics rather than UI or network. Ensure the deck is not reused incorrectly (remove dealt cards). Implement hand ranking logic correctly. Assume a single table (not tournament). Consider extensibility for other variations of poker.",
+    "technical_metadata": {
+      "ideal_time": "45 minutes",
+      "difficulty": "Hard",
+      "topics_covered": {
+        "primary": ["Card Game Logic", "Object-Oriented Design"],
+        "secondary": ["State Machine"]
+      }
+    }
+  }
+]

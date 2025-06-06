@@ -1,0 +1,544 @@
+[
+  {
+    "problem_name": "Parking Lot System",
+    "business_context": "A parking lot system manages vehicle entry, exit, and space allocation in facilities like malls or airports. This is one of the most common low-level design interview questions:contentReference[oaicite:0]{index=0}. The context involves modelling vehicles, parking spots, and ticketing mechanisms in an object-oriented way.",
+    "problem_statement": "Design a parking lot system that can handle multiple levels and vehicle types. The system should support parking and retrieval of vehicles, tracking availability of parking spots, and handling payments or tickets for parking time.",
+    "requirements": [
+      "Support parking of different vehicle types (cars, motorcycles, trucks) in appropriately sized spots",
+      "Assign parking spots when vehicles enter and mark them free when vehicles leave",
+      "Issue tickets or record entry time to calculate parking fees",
+      "Handle payments and exit processing (e.g., barriers or gates)",
+      "Provide APIs to query available spots by type and location"
+    ],
+    "constraints": [
+      "Limited number of spots per level and area (no overbooking)",
+      "Vehicles cannot occupy multiple spots; one vehicle per spot",
+      "Parking fee calculation based on duration or flat rates",
+      "Concurrent vehicle arrivals/exits (thread safety may be required)",
+      "Assume a relatively fixed size parking lot (no dynamic expansion in scope)"
+    ],
+    "technical_metadata": {
+      "ideal_time": "25min",
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": [
+          "Object-oriented design",
+          "Design patterns (Factory, Strategy)"
+        ],
+        "secondary": ["Concurrency control", "Data structures (maps, heaps)"]
+      }
+    }
+  },
+  {
+    "problem_name": "Traffic Signal Control System",
+    "business_context": "Managing intersection traffic is critical for city planning. An interview classic is designing a traffic light controller for a junction:contentReference[oaicite:1]{index=1}. This involves modelling signals, timers, and rules for traffic flow.",
+    "problem_statement": "Design a traffic signal control system to manage traffic at a multi-lane intersection. The system should control light signals (red, yellow, green) for each direction, and switch signals based on configurable durations or sensor inputs.",
+    "requirements": [
+      "Coordinate traffic lights for all directions (e.g., North-South, East-West) to ensure no conflicting green signals",
+      "Allow configuration of signal cycles and timings for each direction",
+      "Incorporate emergency mode (e.g., all lights red or allow special vehicles)",
+      "Handle pedestrian crossing signals and buttons",
+      "Provide interfaces to simulate time progression and change signals accordingly"
+    ],
+    "constraints": [
+      "Avoid collisions by not allowing perpendicular green signals simultaneously",
+      "Assume fixed intersection layout with predefined directions",
+      "Sensors may not always detect vehicles; default to timer-based switching",
+      "Support for real-time updates to timing (e.g., rush hour adjustments)",
+      "Concurrency: simulate independent signal controllers per direction"
+    ],
+    "technical_metadata": {
+      "ideal_time": "25min",
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": ["State machine design", "Event-driven architecture"],
+        "secondary": ["Concurrency", "Scheduling/Timers"]
+      }
+    }
+  },
+  {
+    "problem_name": "Vending Machine",
+    "business_context": "Vending machines dispense products (snacks, drinks) in response to user input and payment. Designing a vending machine (often a coffee machine) is a typical LLD interview example:contentReference[oaicite:2]{index=2}. It demonstrates state management and inventory control in OOP.",
+    "problem_statement": "Design a vending machine system that allows users to select products and pay for them. The system should manage inventory of products, accept currency (coins/notes), dispense products, and return change if necessary.",
+    "requirements": [
+      "Support multiple product types, each with a stock count",
+      "Accept payments and calculate change to return if overpaid",
+      "Dispense the correct product when enough payment is received",
+      "Handle restocking of products and refill of change/change maker",
+      "Report or log inventory levels and transaction history"
+    ],
+    "constraints": [
+      "Limited inventory for each product (cannot dispense if out of stock)",
+      "Coin change availability may limit ability to give exact change",
+      "Assume only exact currency denominations are used (e.g., certain coin values)",
+      "No network connectivity assumed (standalone machine)",
+      "Concurrent operations (multiple coin insertions) may be considered but can assume sequential transactions"
+    ],
+    "technical_metadata": {
+      "ideal_time": "25min",
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": ["State pattern", "Factory pattern"],
+        "secondary": ["Exception handling", "User input/output"]
+      }
+    }
+  },
+  {
+    "problem_name": "ATM Machine",
+    "business_context": "An Automated Teller Machine (ATM) allows bank customers to withdraw cash, deposit money, and check balances. Designing an ATM is a classic OOD interview problem:contentReference[oaicite:3]{index=3}. The context involves modeling user authentication, cash dispensing, and transaction processing.",
+    "problem_statement": "Design an ATM system that supports user authentication and basic banking operations. The system should handle multiple accounts, allow withdrawals, deposits, balance inquiries, and dispense cash in appropriate denominations.",
+    "requirements": [
+      "Authenticate users (e.g., via card and PIN) before allowing transactions",
+      "Support withdraw, deposit, balance check, and possibly transfer functions",
+      "Dispense cash in available denominations and track cash inventory",
+      "Print or display transaction receipts",
+      "Allow multi-language user interfaces (optional)"
+    ],
+    "constraints": [
+      "Daily withdrawal limits per account",
+      "Cash slot limitations (denominations and quantities)",
+      "Ensure transactions are atomic and consistent (no double-withdraw if interrupted)",
+      "High availability and security (safe PIN handling)",
+      "Concurrency: multiple ATMs can access central account database"
+    ],
+    "technical_metadata": {
+      "ideal_time": "25min",
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": ["Security (Authentication)", "Concurrency"],
+        "secondary": ["State pattern", "Transaction management"]
+      }
+    }
+  },
+  {
+    "problem_name": "Task Management System",
+    "business_context": "A task or to-do management system (like Trello or Jira) helps teams track work. Designing such a system is a common interview question that tests object-oriented design skills:contentReference[oaicite:4]{index=4}. It involves modelling users, tasks, projects, and permissions.",
+    "problem_statement": "Design a task management system where users can create tasks, assign them to team members, and track status. Include features like task prioritization, deadlines, and collaboration (e.g., comments or assignment).",
+    "requirements": [
+      "Create, update, and delete tasks with attributes (title, description, due date, priority)",
+      "Assign tasks to users or teams, and change task status (e.g., To Do, In Progress, Done)",
+      "Organize tasks into projects or boards",
+      "Support adding comments or updates to tasks for collaboration",
+      "Provide role-based access (admins, normal users) and notifications on updates"
+    ],
+    "constraints": [
+      "Assume a single application instance (no distributed issues)",
+      "Fixed set of statuses and priority levels",
+      "No need for real-time collaboration editing (simple comment tracking)",
+      "Concurrency: multiple users may update different tasks simultaneously",
+      "Data persistence assumed but database schema design is out of scope"
+    ],
+    "technical_metadata": {
+      "ideal_time": "25min",
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": ["Object-oriented design", "Observer pattern"],
+        "secondary": ["Access control", "Notifications"]
+      }
+    }
+  },
+  {
+    "problem_name": "LRU Cache",
+    "business_context": "An LRU (Least Recently Used) cache stores key-value pairs with limited capacity, evicting the least recently used item when full. Designing an LRU cache is a classic data structure and design interview problem. It tests understanding of hashing and linked structures (Also a common interview question:contentReference[oaicite:5]{index=5}.)",
+    "problem_statement": "Design and implement an LRU cache with capacity 'N'. The cache should support 'get(key)' and 'put(key, value)' operations in O(1) time, evicting the least recently used item when capacity is exceeded.",
+    "requirements": [
+      "get(key): Return the value if present in cache, otherwise return null/indicator of miss",
+      "put(key, value): Insert or update the value for the key, and if capacity exceeded, evict the least recently used item",
+      "Maintain insertion and access order to identify the least recently used item",
+      "Clear or reset cache operations (optional enhancement)"
+    ],
+    "constraints": [
+      "Assume multi-thread access is not required (single-threaded LRU)",
+      "Limited capacity that triggers eviction when full",
+      "Duplicate keys overwrite existing entries (update usage order)",
+      "Focus on in-memory structure (persistence not needed)",
+      "Optimal O(1) time complexity for operations is expected"
+    ],
+    "technical_metadata": {
+      "ideal_time": "25min",
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": ["Hash map", "Doubly linked list"],
+        "secondary": ["Design optimization", "Cache invalidation"]
+      }
+    }
+  },
+  {
+    "problem_name": "Tic-Tac-Toe Game",
+    "business_context": "The Tic-Tac-Toe game (noughts and crosses) is often used to evaluate basic system design skills. Designing this game tests class modelling for players, game board, and rules. It is one of the most common LLD interview questions:contentReference[oaicite:6]{index=6}.",
+    "problem_statement": "Design a Tic-Tac-Toe game for two players. The system should allow players to place marks on a 3x3 board in turns, check for win conditions (three in a row) or draw, and manage game state (start, play, end).",
+    "requirements": [
+      "Represent a 3x3 game board and two players (X and O)",
+      "Allow players to make moves in turn, placing their mark on an empty cell",
+      "Check for game end conditions: win (three in a row) or draw (board full)",
+      "Support restarting or resetting the game",
+      "Optionally handle variable board sizes or more players (design extensibility)"
+    ],
+    "constraints": [
+      "Board size is fixed at 3x3 unless designing for general MxN",
+      "Players must alternate turns correctly",
+      "Invalid moves (cell already taken) are disallowed",
+      "Game ends immediately when a win or draw is detected",
+      "Stateless (simple console game), no need for persistence"
+    ],
+    "technical_metadata": {
+      "ideal_time": "25min",
+      "difficulty": "Easy",
+      "topics_covered": {
+        "primary": ["Game design", "Class modelling"],
+        "secondary": ["Algorithms (win detection)", "Testability"]
+      }
+    }
+  },
+  {
+    "problem_name": "Library Management System",
+    "business_context": "A library management system tracks books and borrowing by users. It is a common LLD interview problem:contentReference[oaicite:7]{index=7}. The system involves classes like Book, User, Library, and handles borrowing and returning of books.",
+    "problem_statement": "Design a library management system where users can borrow and return books. The system should manage a catalog of books, track current loans, and allow users to search the catalog and reserve books.",
+    "requirements": [
+      "Add and catalog new books with details (title, author, ISBN, copies)",
+      "User registration and management of borrower information",
+      "Loan operations: check out a book to a user, return a book",
+      "Track current availability (which copies are loaned out)",
+      "Search functionality by book title, author, or ISBN"
+    ],
+    "constraints": [
+      "A book may have multiple copies but only available copies can be loaned",
+      "Users may have a limit on the number of simultaneous loans",
+      "Handle reservations or waitlists when all copies are on loan (optional)",
+      "Assume a single library branch (no multiple-branch logistics)",
+      "Concurrency: ensure consistent updates when multiple checkouts/returns occur"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Object-oriented design", "Data modelling"],
+        "secondary": ["Search algorithms", "Database schema (for persistence)"]
+      }
+    }
+  },
+  {
+    "problem_name": "Text Editor",
+    "business_context": "A text editor or word processor is a software tool for creating and editing documents. Designing a text editor (with undo/redo) is a classic OOD problem that tests understanding of design patterns like Command. (This is a known OOD interview question:contentReference[oaicite:8]{index=8}.)",
+    "problem_statement": "Design a basic text editor supporting typing, deleting, and cursor movement. Include features like undo/redo of operations, copy/paste, and saving/loading documents.",
+    "requirements": [
+      "Insert and delete text at the current cursor position",
+      "Move cursor (left, right, up, down) within the text buffer",
+      "Implement undo and redo of the last operations",
+      "Copy, cut, and paste text selections",
+      "Load text from a file and save text to a file"
+    ],
+    "constraints": [
+      "Assume a single-user editor (no collaborative features)",
+      "Text is in memory (document size may fit in RAM; no streaming needed)",
+      "Undo/redo stack size may be limited",
+      "Operations should not exceed reasonable time for typical document sizes",
+      "Focus on core features; formatting (fonts, images) not required"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Command pattern", "Data structures (buffer)"],
+        "secondary": ["Undo/Redo implementation", "File I/O"]
+      }
+    }
+  },
+  {
+    "problem_name": "Meeting Room Scheduler",
+    "business_context": "Scheduling meetings in conference rooms is a realistic office application. The design involves managing multiple rooms, timeslots, and participants. Interviewers may ask to design a meeting scheduler to test event scheduling logic.",
+    "problem_statement": "Design a meeting room scheduler for an office building with multiple rooms. The system should allow booking a room for a meeting at a specified time, prevent double-booking, and list available time slots.",
+    "requirements": [
+      "Add meeting rooms with capacities and facilities",
+      "Book a meeting in a room for a given date/time range with a list of participants",
+      "Check availability: reject bookings that conflict with existing ones",
+      "Cancel or modify existing meetings",
+      "List all meetings for a given time period or room"
+    ],
+    "constraints": [
+      "Each meeting room can host at most one meeting at a time",
+      "Time slots are continuous (e.g., meetings can start/end at any time)",
+      "Assume no time zone or recurrence complexities (no repeated meetings)",
+      "Participants are assumed to be available if a room is booked",
+      "Concurrent bookings should be managed to avoid race conditions"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Scheduling algorithms", "Data modelling"],
+        "secondary": ["Concurrency", "Date/time handling"]
+      }
+    }
+  },
+  {
+    "problem_name": "Elevator Management System",
+    "business_context": "An elevator management system controls multiple elevator cars in a building. It is a common interview problem to model elevator logic (car selection, movement):contentReference[oaicite:9]{index=9}. The design involves queues, scheduling, and state management for elevators.",
+    "problem_statement": "Design an elevator system for a building. The system should manage several elevator cars, accept floor requests (up/down) from users, and dispatch the best elevator to service each request efficiently.",
+    "requirements": [
+      "Handle pick-up requests from floors (up or down buttons) and drop-off requests inside elevators (floor selection)",
+      "Dispatch elevators to requested floors based on current state (idle, moving, direction)",
+      "Support multiple elevators with independent controllers",
+      "Respond to simultaneous requests and optimize elevator movement (e.g., nearest elevator)",
+      "Provide status updates on elevator location and direction"
+    ],
+    "constraints": [
+      "Limited number of elevator cars",
+      "Elevators have a maximum capacity (number of people)",
+      "Ignore emergency modes (firefighters' mode) for simplicity",
+      "Assume all elevator calls are in the same system (no external commands)",
+      "Concurrent requests handled sequentially in design assumptions"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["State pattern", "Scheduling (Queue)"],
+        "secondary": ["Threading/Concurrency", "Optimization algorithms"]
+      }
+    }
+  },
+  {
+    "problem_name": "Movie Ticket Booking System",
+    "business_context": "A movie ticket booking system manages theater shows and seat reservations. Commonly referred to as a Box Office design problem, it involves classes for movies, theaters, and seating. It tests handling concurrent bookings and seat management (A frequently asked design question:contentReference[oaicite:10]{index=10}).",
+    "problem_statement": "Design a movie ticket booking system. The system should allow searching for movies and shows, selecting seats in a theater, and booking tickets (with payments and ticket generation).",
+    "requirements": [
+      "Maintain a schedule of movies and showtimes per theater hall",
+      "Allow users to view available seats for a selected show and select specific seats",
+      "Reserve selected seats during booking and handle payments",
+      "Confirm bookings by generating tickets with seat numbers",
+      "Handle cancellations and release seats back to availability"
+    ],
+    "constraints": [
+      "Theater seating is fixed; each seat is unique to a show",
+      "Prevent double-booking of the same seat (handle concurrency)",
+      "Fixed show schedule (no dynamic changes during booking flow)",
+      "Payment processing can be mocked (focus on booking logic)",
+      "Assume a finite number of theaters and shows"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Transactional processing", "Concurrency control"],
+        "secondary": ["User interface flow", "Data modelling"]
+      }
+    }
+  },
+  {
+    "problem_name": "Restaurant Ordering System",
+    "business_context": "A restaurant ordering system (like Zomato or a POS system) manages menus, orders, and billing. Designing this system tests class design for menu items, orders, and payments. Interviews often ask this question to evaluate handling of multiple components like kitchen and delivery (A common interview question:contentReference[oaicite:11]{index=11}).",
+    "problem_statement": "Design a restaurant ordering system. The system should manage restaurants, menus, and customer orders. It should allow placing orders for dishes, updating order status, and generating bills.",
+    "requirements": [
+      "Define restaurant menus with categories (appetizers, entrees, etc.) and items with prices",
+      "Place an order for one or more dishes at a restaurant (in-restaurant or for delivery)",
+      "Track order status (e.g., placed, preparing, delivered)",
+      "Calculate order total and apply taxes or discounts",
+      "Support order cancellations or modifications before preparation"
+    ],
+    "constraints": [
+      "Assume a single restaurant or a small chain (no multi-city scaling)",
+      "Inventory management is out of scope (assume all menu items are in stock)",
+      "Concurrent orders are expected but handled independently",
+      "Payment handling is simplified (not focusing on actual payment gateway)",
+      "Delivery coordination (address, riders) can be optional extension"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Order processing", "State management"],
+        "secondary": ["Integration with payment systems", "User notifications"]
+      }
+    }
+  },
+  {
+    "problem_name": "Online Auction System",
+    "business_context": "An online auction (bidding) system like eBay allows users to list items and bid on them. This problem tests handling real-time bids, user accounts, and item listings. It often appears in interviews to assess event-driven design and concurrency (Frequently asked in interviews:contentReference[oaicite:12]{index=12}).",
+    "problem_statement": "Design an online auction system. The system should allow users to create auction listings for items, other users to place bids, and automatically determine the winning bid when the auction ends.",
+    "requirements": [
+      "User accounts to list items and place bids",
+      "Create auctions with a start time, end time, and initial price",
+      "Accept bids only higher than the current highest bid and before auction end",
+      "Automatically close the auction at end time and declare the highest bidder as the winner",
+      "Notify users (seller and winner) when auction ends"
+    ],
+    "constraints": [
+      "Each auction has one seller and multiple bidders",
+      "Bids must be monotonically increasing; no reneging or proxy bidding needed",
+      "Time synchronization (use consistent server time for end times)",
+      "Assume auctions are not modified once created (no extensions)",
+      "Handle concurrent bid submissions (synchronize to accept highest)"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Observer pattern", "Real-time processing"],
+        "secondary": ["Concurrency control", "Event scheduling"]
+      }
+    }
+  },
+  {
+    "problem_name": "Hotel Reservation System",
+    "business_context": "A hotel reservation system manages room bookings for guests. This involves classes for hotels, rooms, and reservations. It's a typical interview scenario to test availability checking and booking logic (A known design problem:contentReference[oaicite:13]{index=13}).",
+    "problem_statement": "Design a hotel reservation system. The system should manage multiple hotels and rooms, and allow customers to search for available rooms by date and book them for specific durations.",
+    "requirements": [
+      "Maintain list of hotels and rooms (each room has a type and price)",
+      "Check room availability for given date ranges",
+      "Create reservations that lock a room for a guest for the requested dates",
+      "Cancel reservations and release rooms back to availability",
+      "Avoid double-booking of the same room on overlapping dates"
+    ],
+    "constraints": [
+      "Rooms are uniquely identified within each hotel",
+      "Assume each room can only have one reservation per date",
+      "Fixed room rates (ignore dynamic pricing models)",
+      "No need to handle payments; focus on booking logic",
+      "Concurrency: multiple booking attempts may occur at once"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Calendar scheduling", "Object-oriented modelling"],
+        "secondary": ["Concurrency", "Data persistence (e.g. database)"]
+      }
+    }
+  },
+  {
+    "problem_name": "Car Rental System",
+    "business_context": "A car rental service manages vehicle availability and reservations. This problem tests inventory management and reservation flows, similar to hotel booking logic. It's commonly asked to assess handling of fleet management and bookings (A typical LLD question:contentReference[oaicite:14]{index=14}).",
+    "problem_statement": "Design a car rental system. The system should manage a fleet of vehicles, allow customers to reserve a vehicle for a time range, and track vehicle availability.",
+    "requirements": [
+      "Register vehicles in the fleet with details (model, type, location)",
+      "Check availability of cars for requested date range and type",
+      "Create reservations that assign a specific car to a customer for the rental period",
+      "Return vehicles (end of rental) and update availability",
+      "Handle cancellations and make the vehicle available again"
+    ],
+    "constraints": [
+      "Each vehicle can only be rented to one customer at a time",
+      "Fixed locations: vehicles belong to specific branches (no cross-branch rentals)",
+      "Assume no maintenance downtime (every car is available if not rented)",
+      "Prices per day are fixed based on car type",
+      "Concurrency: multiple customers may try to book the same car"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Booking/reservation system", "Inventory management"],
+        "secondary": ["Concurrency", "Exception handling"]
+      }
+    }
+  },
+  {
+    "problem_name": "Publish-Subscribe System",
+    "business_context": "A publish-subscribe messaging system allows publishers to broadcast messages to multiple subscribers based on topics. Designing a pub-sub system assesses understanding of messaging patterns, decoupling, and observers (Interviewed as a sample messaging design problem:contentReference[oaicite:15]{index=15}).",
+    "problem_statement": "Design a publish-subscribe system. The system should allow publishers to publish messages on topics and subscribers to subscribe to topics. When a message is published, all subscribers to that topic should receive the message.",
+    "requirements": [
+      "Create and manage topics (channels) for messages",
+      "Allow clients to subscribe/unsubscribe to specific topics",
+      "Publish messages on a topic, delivering them to all active subscribers of that topic",
+      "Ensure messages are delivered in order for each topic (optional)",
+      "Handle multiple topics and high volumes of messages"
+    ],
+    "constraints": [
+      "Assume an in-memory message broker (no persistence or broker failure handling)",
+      "Subscribers must actively listen (no message queuing for offline clients)",
+      "No need for authentication or access control on topics",
+      "Delivery guarantees (at least once vs exactly once) can be simplified to best effort",
+      "Focus on core pub-sub behavior (ignore scaling/distribution issues)"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Observer pattern", "Message queuing"],
+        "secondary": ["Asynchronous processing", "Fault tolerance (basic)"]
+      }
+    }
+  },
+  {
+    "problem_name": "Customer Issue Ticketing System",
+    "business_context": "A customer support ticketing system (issue resolution) tracks customer problems and support workflows. It is a common LLD question:contentReference[oaicite:16]{index=16}, involving classes for tickets, users (agents/customers), and statuses.",
+    "problem_statement": "Design a customer issue ticketing system. The system should allow creating support tickets, assigning them to support agents, and tracking resolution status.",
+    "requirements": [
+      "Create a support ticket with a description, priority, and customer details",
+      "Assign or reassign tickets to support agents",
+      "Update ticket status (e.g., Open, In Progress, Resolved, Closed)",
+      "Add notes or communication logs to a ticket",
+      "Search or filter tickets by status, priority, or assignee"
+    ],
+    "constraints": [
+      "Each ticket is handled by at most one agent at a time",
+      "Priority levels (low, medium, high) are predefined",
+      "Tickets have unique IDs and timestamps",
+      "Assume simple SLA (e.g., resolution due date) is out of scope",
+      "Concurrency: multiple agents may update different tickets simultaneously"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Workflow design", "State management"],
+        "secondary": ["Notification/Email integration", "Data querying"]
+      }
+    }
+  },
+  {
+    "problem_name": "Digital Wallet Service",
+    "business_context": "A digital wallet service allows users to store funds and make payments. Designing a wallet service tests handling of transactions and account balance updates. It is sometimes asked as a variation on payment systems (A frequent interview question:contentReference[oaicite:17]{index=17}).",
+    "problem_statement": "Design a digital wallet system. The system should allow users to load money into their wallet, view balance, and transfer money to other users or make payments.",
+    "requirements": [
+      "User accounts with unique wallet balances",
+      "Deposit funds into the wallet (e.g., link bank account or add cash)",
+      "Transfer funds between wallets (peer-to-peer)",
+      "Maintain transaction history and update balances atomically",
+      "Provide balance inquiry functionality"
+    ],
+    "constraints": [
+      "Strong consistency: ensure no double-spending (transactions are atomic)",
+      "Balance cannot go negative (no credit extension)",
+      "Single currency (ignore multiple currencies and conversion)",
+      "Assume no external payment gateway integration (focus on wallet logic)",
+      "Concurrent transfers and updates must be handled correctly"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Transaction management", "Concurrency"],
+        "secondary": ["Financial operations", "Security (basic)"]
+      }
+    }
+  },
+  {
+    "problem_name": "Airline Reservation System",
+    "business_context": "An airline reservation system manages flight seat bookings and schedules. It is a familiar interview question (similar to hotel booking) requiring class design for flights, seats, and passenger reservations (A standard LLD problem:contentReference[oaicite:18]{index=18}).",
+    "problem_statement": "Design an airline reservation system. The system should allow customers to search for flights, select seats, and book reservations.",
+    "requirements": [
+      "Maintain flights with schedule and seat inventory (seat map)",
+      "Search flights by origin, destination, and date",
+      "Book a seat for a passenger on a specific flight (assign seat and generate ticket)",
+      "Cancel bookings and free up seats",
+      "Handle basic flight cancellation (all seats become available again)"
+    ],
+    "constraints": [
+      "Seats are uniquely identified within each flight",
+      "Prevent double-booking of the same seat on a flight",
+      "Assume flights have fixed schedules (no on-the-fly changes)",
+      "Simplify pricing (flat fare per flight, ignore classes like economy/business)",
+      "Concurrent booking attempts for the same seat should be synchronized"
+    ],
+    "technical_metadata": {
+      "ideal_time": "35min",
+      "difficulty": "Medium",
+      "topics_covered": {
+        "primary": ["Reservation management", "Data modeling"],
+        "secondary": ["Concurrency", "High availability"]
+      }
+    }
+  }
+]
